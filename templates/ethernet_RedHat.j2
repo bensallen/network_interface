@@ -17,6 +17,6 @@ GATEWAY={{ item.gateway }}
 DEVICE={{ item.device }}
 BOOTPROTO=dhcp
 {% endif %}
-{% if item.vlan == true %}
+{% if item.vlan is defined and item.vlan == true %}
 VLAN=Yes
 {% endif %}
