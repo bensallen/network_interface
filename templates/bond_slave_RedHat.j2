@@ -1,7 +1,6 @@
 DEVICE={{ item.1 }}
+NAME={{ item.1 }}-slave
 BOOTPROTO=none
-MASTER={{ item.0.device }}
 ONBOOT=yes
+MASTER={{ item.0.device }}
 SLAVE=yes
-USERCTL=no
-
