@@ -58,8 +58,10 @@ define static routes and a gateway.
               - network: 192.168.100.0
                 netmask: 255.255.255.0
                 gateway: 192.168.10.1
+             ifdownup: true
            - device: eth2
              bootproto: dhcp
+             ifdownup: false
 
 2) Configure a bridge interface with multiple NIcs added to the bridge.
 
@@ -74,6 +76,7 @@ define static routes and a gateway.
               bootproto: static
               stp: "on"
               ports: [eth1, eth2]
+              ifdownup: true
 
 Note: Routes can also be added for this interface in the same way routes are
 added for ethernet interfaces.
@@ -91,6 +94,7 @@ added for ethernet interfaces.
               bond_mode: active-backup
               bond_miimon: 100
               bond_slaves: [eth1, eth2]
+              ifdownup: true
               route:
               - network: 192.168.222.0
                 netmask: 255.255.255.0
@@ -108,6 +112,7 @@ address obtained via DHCP.
               bond_mode: 802.3ad
               bond_miimon: 100
               bond_slaves: [eth1, eth2]
+              ifdownup: true
 
 5) All the above examples show how to configure a single host, The below
 example shows how to define your network configurations for all your machines.
@@ -130,6 +135,7 @@ Describe your network configuration for each host in host vars:
              address: 192.168.10.18
              netmask: 255.255.255.0
              gateway: 192.168.10.1
+             ifdownup: true
              route:
               - network: 192.168.200.0
                 netmask: 255.255.255.0
@@ -149,6 +155,7 @@ Describe your network configuration for each host in host vars:
              address: 192.168.10.18
              netmask: 255.255.255.0
              gateway: 192.168.10.1
+             ifdownup: true
 
 Create a playbook which applies this role to all hosts as shown below, and run
 the playbook. All the servers should have their network interfaces configured
@@ -177,4 +184,3 @@ Author Information
 ------------------
 
 Benno Joy
-
